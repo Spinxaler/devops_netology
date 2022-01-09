@@ -1,35 +1,45 @@
-Ответы к заданию 2.4. Инструменты Git
+Ответы к заданию 3.1.
 
-1. aefead2207ef7e2aa5dc81a34aedf0cad4c32545 Update CHANGELOG.md 
+5. Ресурсы по умолчанию. 
+![изображение](https://user-images.githubusercontent.com/16610642/148691141-b1b5a368-5abf-4fff-9265-3de0057d5abd.png)
+6. Добавить памяти и проццесоров.
 
-2. v0.12.23
+config.vm.provider "virtualbox" do |v| 
 
-3. 2 родителя 56cd7859e05c36c06b56d013b55a252d0bb7e158  9ea88f22fc6269854151c571162c5bcf958bee2b
+v.memory = 1024 
 
-4. b14b74c4939dcab573326f4e3ee2a62e23e12f89 [Website] vmc provider links 
+v.cpus = 2
 
-   3f235065b9347a758efadc92295b540ee0a5e26e Update CHANGELOG.md
-	
-   6ae64e247b332925b872447e9ce869657281c2bf registry: Fix panic when server is unreachable
-	
-   5c619ca1baf2e21a155fcdb4c264cc9e24a2a353 website: Remove links to the getting started guide's old location
-	
-   06275647e2b53d97d4f0a19a0fec11f6d69820b5 Update CHANGELOG.md
-	
-   d5f9411f5108260320064349b757f55c09bc4b80 command: Fix bug when using terraform login on Windows
-	
-   4b6d06cc5dcb78af637bbb19c198faff37a066ed Update CHANGELOG.md
-	
-   dd01a35078f040ca984cdd349f18d0b67e486c35 Update CHANGELOG.md
-	
-   225466bc3e5f35baa5d07197bbc079345b77525e Cleanup after v0.12.23 release
-	
-5. 8c928e83589d90a031f811fae52a81be7153e82f
+end 
 
-6. 35a058fb3ddfae9cfee0b3893822c9a95b920f4c main: configure credentials from the CLI config file
+8. Переменная -  длина файла журнала history - HISTFILESIZE номер строки 846 
 
-   c0b17610965450a89598da491ce9b6b5cbd6393f prevent log output during init
-	
-   8364383c359a6b738a436d1b7745ccdce178df47 Push plugin discovery down into command package
-	
-7. Martin Atkins <mart@degeneration.co.uk>
+ Переменная - Количество запомненных команд - HISTSIZE номер строки 862
+ 
+ ignoreboth - указывает не сохранять дубликаты команд и команды которые начинаются с пробела.
+ 
+ 9. {} позволяют объединить несколько операторов в один составной. номер строки 257
+ 
+ 10.
+ 
+ touch {1..100000}.txt
+ на 300000 выдаёт ошибку touch: Argument list too long
+ 
+ Гугл на это говорит что это ограничение переменной ARG_MAX - это максимальная длина аргументов командной строки для семейства exec().
+ 
+ 11. Проверяет условие в квадратных скобках, ответ истина или ложь.
+
+12.
+
+mkdir /tmp/new_path_directory
+
+cp /bin/bash /tmp/new_path_directory
+
+PATH=/tmp/new_path_directory/bash/:$PATH
+
+![изображение](https://user-images.githubusercontent.com/16610642/148696237-d7ee8089-08cc-4586-8d67-f4fe0de67c23.png)
+
+
+13.
+
+команда at используется для назначения одноразового задания на заданное время, а команда batch — для назначения одноразовых задач, которые должны выполняться, когда  позволяет уровень загрузки системы. По умолчанию задания выполняются, когда средняя загрузка системы ниже 1,5. Значение нагрузки можно указать при вызове демона atd . Если средняя загрузка системы выше указанной, задания будут ждать в очереди.
