@@ -70,3 +70,8 @@ node_network_receive_packets_total{device="eth0"} 141257
 
 3.
 
+![изображение](https://user-images.githubusercontent.com/16610642/151693592-386dfb8b-232c-4198-b17e-279d98d2918a.png)
+
+4. Судя по выводу, то понимает что она на виртуальном оборудовании.
+
+![изображение](https://user-images.githubusercontent.com/16610642/151693501-98c56216-fc02-442d-9b29-bd093654d176.png)
