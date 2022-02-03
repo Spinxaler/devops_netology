@@ -1,5 +1,10 @@
 Ответы к заданию 3.4
 
+Дополнения.
+ в /etc/systemd/node-exporter.service Прописываем переменную OPTS
+![изображение](https://user-images.githubusercontent.com/16610642/152285826-f24774e6-2447-45d5-9674-c133867f72cc.png)
+
+
 1.  Создадим файл node-exporter.service в /etc/systemd/
 
 ![изображение](https://user-images.githubusercontent.com/16610642/151691586-eb4844d4-c8e7-4a61-a8cf-76daab286864.png)
