@@ -27,14 +27,23 @@ Vlan - пакет.  Настройка или через конфиг файлы
 0 (balance-rr), 1 (active-backup), 2 (balance-xor), 3 (broadcast), 4 (802.3ad), 5 (balance-tlb), 6 (balance-alb).
 
 auto bond0 eth0 eth1
+
 iface bond0 inet static
+
         address 192.168.0.120
+        
         netmask 255.255.255.0
+        
         gateway 192.168.0.254
+        
         bond-slaves eth0 eth1
+        
         bond-mode balance-alb
+        
         bond-miimon 100
+        
         bond-downdelay 200
+        
         bond-updelay 200
 
 5.
@@ -51,7 +60,9 @@ iface bond0 inet static
 ![изображение](https://user-images.githubusercontent.com/16610642/153751787-82eee9ac-661a-42d2-b60e-ca97c81ebc13.png)
 
 
-ip neigh flush 192.168.0.211 удалить МАС от определённого IP. ip neigh flush ALL  - удалить все записи.
+ip neigh flush 192.168.0.211 удалить МАС от определённого IP. 
+
+ip neigh flush ALL  - удалить все записи.
 
 
 
