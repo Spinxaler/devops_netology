@@ -26,9 +26,9 @@ Vlan - пакет.  Настройка или через конфиг файлы
 
 0 (balance-rr), 1 (active-backup), 2 (balance-xor), 3 (broadcast), 4 (802.3ad), 5 (balance-tlb), 6 (balance-alb).
 
-auto bond0 eth0 eth1
+        auto bond0 eth0 eth1
 
-iface bond0 inet static
+        iface bond0 inet static
 
         address 192.168.0.120
         
