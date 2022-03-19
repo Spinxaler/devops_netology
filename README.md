@@ -46,23 +46,41 @@
 
 ### Ваш скрипт:
 ```python
-???
+#!/usr/bin/env python3
+
+import socket 
+import json 
+import yaml 
+
+FileJSON = "/home/vagrant/ip.json"
+FileYAML = "/home/vagrant/ip.yaml"
+hostlist = {'drive.google.com':'108.177.14.194', 'mail.google.com':'216.58.209.197', 'google.com':'216.58.21.174'}
+with open(FileJSON, 'w') as FJ:
+ with open(FileYAML, 'w') as FY:
+  for st in hostlist:
+    FY.write(yaml.dump([{st:hostlist[st]}]))
+    json.dump({st:hostlist[st]}, FJ)
+    for i in range(5):
+        ip = socket.gethostbyname(st)
+        if ip != hostlist[st]:
+            print(' [ERROR] ' + str(st) +' IP mistmatch: '+hostlist[st]+' '+ip)
+            hostlist[st]=ip
+            FY.write(yaml.dump([{st:hostlist[st]}]))
+            json.dump({st:hostlist[st]}, FJ)
+        else:
+            print(str(st)+' '+ip)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
-```
-???
-```
+![изображение](https://user-images.githubusercontent.com/16610642/159116492-70940522-7782-4c86-8fa7-c5f1739850f6.png)
+
 
 ### json-файл(ы), который(е) записал ваш скрипт:
-```json
-???
-```
+![изображение](https://user-images.githubusercontent.com/16610642/159116513-b4d6f627-1491-4dfe-90d1-af5bec246353.png)
+
 
 ### yml-файл(ы), который(е) записал ваш скрипт:
-```yaml
-???
-```
+![изображение](https://user-images.githubusercontent.com/16610642/159116515-1a9f8183-237b-424f-b121-8a04828c3d44.png)
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
 
