@@ -37,18 +37,18 @@ $ curl http://localhost:9200/
 ```json
 {
   "name" : "netology_test",
-  "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "1jxOaMjeQASfgV6f8TOKSg",
+  "cluster_name" : "netology_test_cluster",
+  "cluster_uuid" : "CmnlpVLTRkey47ycIsplpA",
   "version" : {
     "number" : "8.1.1",
     "build_flavor" : "default",
     "build_type" : "tar",
-    "build_hash" : "31df9689e80bad577ac20176aa7f2371ea5eb4c1",
-    "build_date" : "2022-05-29T18:51:01.267279988Z",
+    "build_hash" : "d0925dd6f22e07b935750420a3155db6e5c58381",
+    "build_date" : "2022-03-17T22:01:32.658689558Z",
     "build_snapshot" : false,
-    "lucene_version" : "8.11.1",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
+    "lucene_version" : "9.0.0",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
   },
   "tagline" : "You Know, for Search"
 }
@@ -66,28 +66,77 @@ $ curl http://localhost:9200/
 | ind-3 | 2 | 4 |
 
 ```bash
-
+$ curl -X PUT "localhost:9200/ind-1?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  }
+}
+'
+```
+```bash
+$ curl -X PUT "localhost:9200/ind-2?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 1
+  }
+}
+'
+```
+```bash
+$ curl -X PUT "localhost:9200/ind-3?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 4,
+    "number_of_replicas": 2
+  }
+}
+'
 ```
 Получите список индексов и их статусов, используя API и **приведите в ответе** на задание.
 
 ```bash
-
+$ curl 'localhost:9200/_cat/indices?v'
+health status index           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   ind-1           LaPC2n6wRYu9o-11PsI0UQ   1   0          0            0       226b           226b
+yellow open   ind-3           YrxEBcypQxKJmaJtBMjEQg   4   2          0            0       604b           604b
+yellow open   my-index-000001 BykGdfA7RfSrdR5FpQcc3w   1   1          0            0       226b           226b
+yellow open   ind-2           2uKFogwcQ76mup_L7cociA   2   1          0            0       452b           452b
 ```
 
 Получите состояние кластера `elasticsearch`, используя API.
 
 ```bash
-
+$ curl -X GET "localhost:9200/_cluster/health?pretty"
+{
+  "cluster_name" : "netology_test_cluster",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 10,
+  "active_shards" : 10,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 10,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 50.0
+}
 ```
 Как вы думаете, почему часть индексов и кластер находится в состоянии yellow?
 
 ```
-
+Первичный шард и реплика не могут находиться на одном узле, если копия не назначена. Таким образом, один узел не может размещать копии
 ```
 Удалите все индексы.
 
 ```bash
-
+$ curl -X DELETE 'http://localhost:9200/_all'
 ```
 
 >Задача 3
