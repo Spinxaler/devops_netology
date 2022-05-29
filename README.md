@@ -1,89 +1,151 @@
-> # Задача 1
+> Задача 1
+
+- текст Dockerfile манифеста
+```dockerfile
+FROM centos:7
+
+EXPOSE 9200 9300
+
+USER 0
+
+RUN export ES_HOME="/var/lib/elasticsearch" && \
+    yum -y install wget && \
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.0-linux-x86_64.tar.gz && \
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.0-linux-x86_64.tar.gz.sha512 && \
+    sha512sum -c elasticsearch-7.17.0-linux-x86_64.tar.gz.sha512 && \
+    tar -xzf elasticsearch-7.17.0-linux-x86_64.tar.gz && \
+    rm -f elasticsearch-7.17.0-linux-x86_64.tar.gz* && \
+    mv elasticsearch-7.17.0 ${ES_HOME} && \
+    useradd -m -u 1000 elasticsearch && \
+    chown elasticsearch:elasticsearch -R ${ES_HOME} && \
+    yum -y remove wget && \
+    yum clean all
+
+COPY --chown=elasticsearch:elasticsearch config/* /var/lib/elasticsearch/config/
+    
+USER 1000
+
+ENV ES_HOME="/var/lib/elasticsearch" \
+    ES_PATH_CONF="/var/lib/elasticsearch/config"
+WORKDIR ${ES_HOME}
+
+CMD ["sh", "-c", "${ES_HOME}/bin/elasticsearch"]
+```
+```bash
+$ docker build .
+$ docker login -u "spinxaler" -p "****" docker.io
+$ docker tag 2f99f8d83166 spinxaler/devops-elasticsearch:7.17
+$ docker push spinxaler/devops-elasticsearch:7.17
+```
+- ссылку на образ в репозитории dockerhub
+https://hub.docker.com/repository/docker/podkovka/devops-elasticsearch
+- ответ `elasticsearch` на запрос пути `/` в json виде
+```bash
+$ docker run --rm -d --name elastic -p 9200:9200 -p 9300:9300 spinxaler/devops-elasticsearch:7.17
+$ docker ps
+CONTAINER ID   IMAGE                                COMMAND                  CREATED          STATUS          PORTS                                            NAMES
+5262d69644f7   podkovka/devops-elasticsearch:7.17   "sh -c ${ES_HOME}/bi…"   7 seconds ago   Up 6 seconds   0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp   elastic
+$ curl -X GET 'localhost:9200/'
+```
+```json
+{
+  "name" : "netology_test",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "1jxOaMjeQASfgV6f8TOKSg",
+  "version" : {
+    "number" : "7.17.0",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "bee86328705acaa9a6daede7140defd4d9ec56bd",
+    "build_date" : "2022-01-28T08:36:04.875279988Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.11.1",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
+>Задача 2
+
+Ознакомьтесь с [документацией](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html) 
+и добавьте в `elasticsearch` 3 индекса, в соответствии со таблицей:
+
+| Имя | Количество реплик | Количество шард |
+|-----|-------------------|-----------------|
+| ind-1| 0 | 1 |
+| ind-2 | 1 | 2 |
+| ind-3 | 2 | 4 |
+
+```bash
+
+```
+Получите список индексов и их статусов, используя API и **приведите в ответе** на задание.
+
+```bash
+
+```
+
+Получите состояние кластера `elasticsearch`, используя API.
+
+```bash
+
+```
+Как вы думаете, почему часть индексов и кластер находится в состоянии yellow?
+
+```
+
+```
+Удалите все индексы.
+
+```bash
+
+```
+
+>Задача 3
+
+Создайте директорию `{путь до корневой директории с elasticsearch в образе}/snapshots`.
+```bash
+
+```
+
+Используя API [зарегистрируйте](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-register-repository) 
+данную директорию как `snapshot repository` c именем `netology_backup`.
+
+```bash
+
+```
 
 
-> Посмотреть статус Mysql
-```Bash
-mysql> \s
-Server version:     8.0.21 MySQL Community Server – GPL
-```
-> Получите список таблиц из этой БД
-```Bash
-mysql> SHOW TABLES;
-+-------------------+
-| Tables_in_test_db |
-+-------------------+*
-| orders            |
-+-------------------+
-1 row in set (0.00 sec)
-```
-> Приведите в ответе количество записей с price > 300.
-```Bash
-mysql> SELECT \* FROM orders WHERE price > 300;
-+----+----------------+-------+
-| id | title          | price |
-+----+----------------+-------+
-| 2  | My little pony |  500  |
-+----+----------------+-------+
-1 row in set (0.00 sec)
-```
-> # Задача 2
-> Создайте пользователя test в БД c паролем test-pass
-```Bash
-CREATE USER 'test'@'%' IDENTIFIED WITH mysql_native_password BY 'test-pass'
-WITH MAX_QUERIES_PER_HOUR 100
-PASSWORD EXPIRE INTERVAL 180 DAY
-FAILED_LOGIN_ATTEMPTS 3
-ATTRIBUTE '{"fname": "James", "lname": "Pretty "}';
-```
-> Предоставьте привилегии пользователю test на операции SELECT базы test_db.
-```Bash
-GRANT SELECT ON test_db.\* TO 'test'@'%';
-FLUSH PRIVILEGES;
-```
-> Используя таблицу INFORMATION_SCHEMA.USER_ATTRIBUTES получите данные по пользователю test и приведите в ответе к задаче.
-```Bash
-SELECT \* FROM INFORMATION_SCHEMA.USER_ATTRIBUTES WHERE USER='test';
-+------+------+-----------------------------------------+\
-| USER | HOST | ATTRIBUTE                               |\
-+------+------+-----------------------------------------+\
-| test | %  | {"fname": "James", "lname": " Pretty "}   |\
-+------+------+-----------------------------------------+\
+
+Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
+
+```bash
 ```
 
-> # Задача 3
-```Bash
-SET profiling = 1;
-```
-> Исследуйте, какой engine используется в таблице БД test_db и приведите в ответе.
-```Bash
-SHOW TABLE STATUS FROM test_db LIKE 'orders';
-..Engine = InnoDB
-```
-> Измените engine и приведите время выполнения и запрос на изменения из профайлера в ответе:
-```Bash
-ALTER TABLE orders ENGINE = MyISAM;
-Query OK, 5 rows affected (0.02 sec)
-Records: 5 Duplicates: 0 Warnings: 0
+[Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
+состояния кластера `elasticsearch`.
 
-mysql> SHOW PROFILES;
-32 | 0.01948600 | ALTER TABLE orders ENGINE = MyISAM
-``` 
-> # Задача 4 
->
-> Приведите в ответе измененный файл `my.cnf`.
-```Bash
-cat /etc/mysql/my.cnf
-[mysqld]
-pid-file    = /var/run/mysqld/mysqld.pid
-socket     = /var/run/mysqld/mysqld.sock
-datadir     = /var/lib/mysql
-secure-file-priv= NULL
+```bash
 
-innodb_flush_log_at_trx_commit = 2
-innodb_flush_method = O_DIRECT
-innodb_file_per_table = ON
-innodb_log_buffer_size = 1M
-innodb_buffer_pool_size = 6G
-innodb_log_file_size = 100M
-!includedir /etc/mysql/conf.d/
+```
+
+**Приведите в ответе** список файлов в директории со `snapshot`ами.
+```bash
+
+```
+
+Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
+
+```bash
+
+```
+
+[Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
+кластера `elasticsearch` из `snapshot`, созданного ранее. 
+
+**Приведите в ответе** запрос к API восстановления и итоговый список индексов.
+```bash
+
 ```
