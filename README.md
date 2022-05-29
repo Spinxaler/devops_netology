@@ -4,20 +4,18 @@
 ```dockerfile
 FROM centos:7
 COPY ./src /var/src/
-RUN groupadd elasticsearch \
-	&& useradd elasticsearch -g elasticsearch -p elasticsearch \
-	&& cd /var/src/ \
-	&& tar -xzf /var/src/elasticsearch-8.1.1-linux-x86_64.tar.gz \
-	&& mkdir -p /var/lib/elasticsearch/data \
-	&& mkdir -p /var/lib/elasticsearch/logs \
-	&& mkdir -p /elasticsearch-8.1.1/snapshots \
-	&& chown -R elasticsearch:elasticsearch /elasticsearch-8.1.1 \
-	&& chown -R elasticsearch:elasticsearch /var/lib/elasticsearch/data \
-	&& chown -R elasticsearch:elasticsearch /var/lib/elasticsearch/data
-ADD elasticsearch.yml /elasticsearch-8.1.1/config/
-WORKDIR elasticsearch-8.1.1/
-USER elasticsearch
-CMD ./bin/elasticsearch
+RUN cd /var/src/ && \
+tar -xzf /var/src/elasticsearch-8.1.1-linux-x86_64.tar.gz && \
+rm /var/src/elasticsearch-8.1.1-linux-x86_64.tar.gz && \
+cp elasticsearch.yml /var/src/elasticsearch-8.1.1/config/ && \
+adduser elastic && \
+gpasswd -a elastic wheel && \
+chown -R elastic:elastic /var/src/elasticsearch-8.1.1 && \
+chmod 755 /var/src/elasticsearch-8.1.1 && \
+chmod 777 /var/lib
+USER elastic:wheel
+EXPOSE 9200 9300
+CMD ["var/src/elasticsearch-8.1.1/bin/elasticsearch"]
 ```
 ```bash
 $ docker build .
@@ -34,7 +32,7 @@ $ docker ps
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                                                                  NAMES
 5d0d0f7f91d4   spinxaler/devops-elasticsearch:8.1.1   "sh -c ${ES_HOME}/bi…"   43 seconds ago   Up 42 seconds   0.0.0.0:9200->9200/tcp, :::9200->9200/tcp, 0.0.0.0:9300->9300/tcp, :::9300->9300/tcp   es
 
-$ curl http://localhost:9200
+$ curl http://localhost:9200/
 ```
 ```json
 {
