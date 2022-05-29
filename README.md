@@ -38,7 +38,7 @@ $ docker tag 2f99f8d83166 spinxaler/devops-elasticsearch:7.17
 $ docker push spinxaler/devops-elasticsearch:7.17
 ```
 - ссылку на образ в репозитории dockerhub
-https://hub.docker.com/repository/docker/podkovka/devops-elasticsearch
+
 - ответ `elasticsearch` на запрос пути `/` в json виде
 ```bash
 $ docker run --rm -d --name elastic -p 9200:9200 -p 9300:9300 spinxaler/devops-elasticsearch:7.17
