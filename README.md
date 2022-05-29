@@ -3,49 +3,38 @@
 - текст Dockerfile манифеста
 ```dockerfile
 FROM centos:7
-
-EXPOSE 9200 9300
-
-USER 0
-
-RUN export ES_HOME="/var/lib/elasticsearch" && \
-    yum -y install wget && \
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.0-linux-x86_64.tar.gz && \
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.0-linux-x86_64.tar.gz.sha512 && \
-    sha512sum -c elasticsearch-7.17.0-linux-x86_64.tar.gz.sha512 && \
-    tar -xzf elasticsearch-7.17.0-linux-x86_64.tar.gz && \
-    rm -f elasticsearch-7.17.0-linux-x86_64.tar.gz* && \
-    mv elasticsearch-7.17.0 ${ES_HOME} && \
-    useradd -m -u 1000 elasticsearch && \
-    chown elasticsearch:elasticsearch -R ${ES_HOME} && \
-    yum -y remove wget && \
-    yum clean all
-
-COPY --chown=elasticsearch:elasticsearch config/* /var/lib/elasticsearch/config/
-    
-USER 1000
-
-ENV ES_HOME="/var/lib/elasticsearch" \
-    ES_PATH_CONF="/var/lib/elasticsearch/config"
-WORKDIR ${ES_HOME}
-
-CMD ["sh", "-c", "${ES_HOME}/bin/elasticsearch"]
+COPY ./src /var/src/
+RUN groupadd elasticsearch \
+	&& useradd elasticsearch -g elasticsearch -p elasticsearch \
+	&& cd /var/src/ \
+	&& tar -xzf /var/src/elasticsearch-8.1.1-linux-x86_64.tar.gz \
+	&& mkdir -p /var/lib/elasticsearch/data \
+	&& mkdir -p /var/lib/elasticsearch/logs \
+	&& mkdir -p /elasticsearch-8.1.1/snapshots \
+	&& chown -R elasticsearch:elasticsearch /elasticsearch-8.1.1 \
+	&& chown -R elasticsearch:elasticsearch /var/lib/elasticsearch/data \
+	&& chown -R elasticsearch:elasticsearch /var/lib/elasticsearch/data
+ADD elasticsearch.yml /elasticsearch-8.1.1/config/
+WORKDIR elasticsearch-8.1.1/
+USER elasticsearch
+CMD ./bin/elasticsearch
 ```
 ```bash
 $ docker build .
 $ docker login -u "spinxaler" -p "****" docker.io
-$ docker tag 2f99f8d83166 spinxaler/devops-elasticsearch:7.17
-$ docker push spinxaler/devops-elasticsearch:7.17
+$ docker tag 2f99f8d83166 spinxaler/devops-elasticsearch:8.1.1
+$ docker push spinxaler/devops-elasticsearch:8.1.1
 ```
 - ссылку на образ в репозитории dockerhub
-
+https://hub.docker.com/repository/docker/spinxaler/devops-elasticsearch
 - ответ `elasticsearch` на запрос пути `/` в json виде
 ```bash
-$ docker run --rm -d --name elastic -p 9200:9200 -p 9300:9300 spinxaler/devops-elasticsearch:7.17
+$ docker run --rm -d --name es -p 9200:9200 -p 9300:9300 spinxaler/devops-elasticsearch:8.1.1
 $ docker ps
-CONTAINER ID   IMAGE                                COMMAND                  CREATED          STATUS          PORTS                                            NAMES
-5262d69644f7   podkovka/devops-elasticsearch:7.17   "sh -c ${ES_HOME}/bi…"   7 seconds ago   Up 6 seconds   0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp   elastic
-$ curl -X GET 'localhost:9200/'
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                                                                  NAMES
+5d0d0f7f91d4   spinxaler/devops-elasticsearch:8.1.1   "sh -c ${ES_HOME}/bi…"   43 seconds ago   Up 42 seconds   0.0.0.0:9200->9200/tcp, :::9200->9200/tcp, 0.0.0.0:9300->9300/tcp, :::9300->9300/tcp   es
+
+$ curl http://localhost:9200
 ```
 ```json
 {
@@ -56,8 +45,8 @@ $ curl -X GET 'localhost:9200/'
     "number" : "7.17.0",
     "build_flavor" : "default",
     "build_type" : "tar",
-    "build_hash" : "bee86328705acaa9a6daede7140defd4d9ec56bd",
-    "build_date" : "2022-01-28T08:36:04.875279988Z",
+    "build_hash" : "31df9689e80bad577ac20176aa7f2371ea5eb4c1",
+    "build_date" : "2022-05-29T18:51:01.267279988Z",
     "build_snapshot" : false,
     "lucene_version" : "8.11.1",
     "minimum_wire_compatibility_version" : "6.8.0",
