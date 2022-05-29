@@ -40,7 +40,7 @@ $ curl http://localhost:9200/
   "cluster_name" : "elasticsearch",
   "cluster_uuid" : "1jxOaMjeQASfgV6f8TOKSg",
   "version" : {
-    "number" : "7.17.0",
+    "number" : "8.1.1",
     "build_flavor" : "default",
     "build_type" : "tar",
     "build_hash" : "31df9689e80bad577ac20176aa7f2371ea5eb4c1",
