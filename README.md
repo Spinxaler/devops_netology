@@ -143,39 +143,72 @@ $ curl -X DELETE 'http://localhost:9200/_all'
 
 Создайте директорию `{путь до корневой директории с elasticsearch в образе}/snapshots`.
 ```bash
-
+$ docker exec -u root -it es bash
+[root@5d0d0f7f91d4  elasticsearch]# mkdir $ES_HOME/snapshots
 ```
 
 Используя API [зарегистрируйте](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-register-repository) 
 данную директорию как `snapshot repository` c именем `netology_backup`.
 
 ```bash
-
+bash
+# echo path.repo: [ "/var/lib/elasticsearch/snapshots" ] >> "$ES_HOME/config/elasticsearch.yml"
+# chown elasticsearch:elasticsearch /var/lib/elasticsearch/snapshots
+$ docker restart es
+$ curl -X PUT "localhost:9200/_snapshot/netology_backup?pretty" -H 'Content-Type: application/json' -d'
+{
+  "type": "fs",
+  "settings": {
+    "location": "/var/lib/elasticsearch/snapshots",
+    "compress": true
+  }
+}'
+{"acknowledged":true
 ```
-
-
 
 Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
 
 ```bash
+$ curl -X PUT "localhost:9200/test?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  }
+}
+'
+$ curl 'localhost:9200/_cat/indices?v'
+health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   my-index-000001  BykGdfA7RfSrdR5FpQcc3w   1   1          0            0       226b           226b
+green  open   test             JuKFogwcQeZiwirdSjt3   1   0          0            0       226b           226b
 ```
+
 
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
 состояния кластера `elasticsearch`.
 
 ```bash
-
-```
-
-**Приведите в ответе** список файлов в директории со `snapshot`ами.
-```bash
-
+bash
+$ curl -X PUT "localhost:9200/_snapshot/netology_backup/snapshot_1?wait_for_completion=true&pretty"
 ```
 
 Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
 
 ```bash
-
+ash
+$ curl -X DELETE "localhost:9200/test?pretty"
+$ curl -X PUT "localhost:9200/test-2?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  }
+}
+'
+$ curl 'localhost:9200/_cat/indices?v'
+health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   my-index-000001  BykGdfA7RfSrdR5FpQcc3w   1   1          0            0       226b           226b
+green  open   test-2           Xw_SdQXLQZuWJ8xPsI0UQ5   1   0          0            0       226b           226b
 ```
 
 [Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
@@ -183,5 +216,16 @@ $ curl -X DELETE 'http://localhost:9200/_all'
 
 **Приведите в ответе** запрос к API восстановления и итоговый список индексов.
 ```bash
-
+curl -X POST "localhost:9200/_snapshot/netology_backup/snapshot_1/_restore?pretty" -H 'Content-Type: application/json' -d'
+{
+  "indices": "*",
+  "include_global_state": true
+}
+'
+```
+```bash
+$ curl 'localhost:9200/_cat/indices?v'
+health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   my-index-000001  BykGdfA7RfSrdR5FpQcc3w   1   1          0            0       226b           226b
+green  open   test             MGdf0vHRoudR5AcAdfA7yr   1   0          0            0       226b           226b
 ```
