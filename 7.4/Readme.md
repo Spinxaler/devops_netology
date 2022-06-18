@@ -31,8 +31,8 @@
 1. Необходимо включить автопланирование при изменении любых файлов `*.tf`.
 
 В качестве результата приложите ссылку на файлы `server.yaml` и `atlantis.yaml`.
-https://github.com/Spinxaler/devops_netology/blob/master/7.4/atlantis.yaml
-https://github.com/Spinxaler/devops_netology/blob/master/7.4/server.yaml
+-[Atlantis.yaml](https://github.com/Spinxaler/devops_netology/blob/master/7.4/atlantis.yaml)
+-[Server.yaml](https://github.com/Spinxaler/devops_netology/blob/master/7.4/server.yaml)
 ## Задача 3. Знакомство с каталогом модулей. 
 
 1. В [каталоге модулей](https://registry.terraform.io/browse/modules) найдите официальный модуль от aws для создания
