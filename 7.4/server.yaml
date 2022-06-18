@@ -1,0 +1,12 @@
+repos:
+- id: github.com/Spinxaler/devops_netology/tree/master/7.4
+  branch: /.*/
+  apply_requirements: [approved, mergeable]
+  allow_custom_workflows: true
+  workflows:
+  default:
+    plan:
+      steps:
+        - init
+        - plan:
+            extra_args: ["-lock", "false"]
