@@ -28,6 +28,8 @@ dynamodb.
 
 В виде результата работы пришлите:
 * Вывод команды `terraform workspace list`.
+![image](https://user-images.githubusercontent.com/16610642/174425798-6ecf052c-4724-4ae0-abdd-74bac97b6aad.png)
+
 * Вывод команды `terraform plan` для воркспейса `prod`.  
 
 ---
