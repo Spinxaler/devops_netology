@@ -31,6 +31,12 @@ dynamodb.
 ![image](https://user-images.githubusercontent.com/16610642/174425798-6ecf052c-4724-4ae0-abdd-74bac97b6aad.png)
 
 * Вывод команды `terraform plan` для воркспейса `prod`.  
+![image](https://user-images.githubusercontent.com/16610642/174426620-906d0f43-59ac-4df5-90dc-cde26ef8f12a.png)
+![image](https://user-images.githubusercontent.com/16610642/174426634-57192236-575c-49c9-a073-dacb981328b7.png)
+![image](https://user-images.githubusercontent.com/16610642/174426644-7dfb6f41-5578-43ac-a2fd-d76af6abe139.png)
+![image](https://user-images.githubusercontent.com/16610642/174426657-a79dca9a-ca60-4acd-944c-cd2bea069fdb.png)
+![image](https://user-images.githubusercontent.com/16610642/174426672-a02bcf64-b1de-46b7-a00c-5d84936e2bd1.png)
+![image](https://user-images.githubusercontent.com/16610642/174426690-a40d565b-4d20-4a24-847e-818c9bfa4d74.png)
 
 ---
 
