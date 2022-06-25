@@ -34,12 +34,17 @@
         fmt.Println(output)    
     }
     ```
+ [https://github.com/Spinxaler/devops_netology/blob/master/7.5/MetrToFut.go](https://github.com/Spinxaler/devops_netology/blob/master/7.5/MetrToFut.go)
  
 1. Напишите программу, которая найдет наименьший элемент в любом заданном списке, например:
     ```
     x := []int{48,96,86,68,57,82,63,70,37,34,83,27,19,97,9,17,}
     ```
+ [https://github.com/Spinxaler/devops_netology/blob/master/7.5/FindMin.go](https://github.com/Spinxaler/devops_netology/blob/master/7.5/FindMin.go)
+    
 1. Напишите программу, которая выводит числа от 1 до 100, которые делятся на 3. То есть `(3, 6, 9, …)`.
+
+[https://github.com/Spinxaler/devops_netology/blob/master/7.5/DelTo3](https://github.com/Spinxaler/devops_netology/blob/master/7.5/DelTo3)
 
 В виде решения ссылку на код или сам код. 
 
