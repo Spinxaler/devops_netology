@@ -13,11 +13,49 @@
 
 
 1. Найдите, где перечислены все доступные `resource` и `data_source`, приложите ссылку на эти строки в коде на 
-гитхабе.   
+гитхабе. 
+
+resource - [https://github.com/hashicorp/terraform-provider-aws/blob/19d5b4c0d336170d1969a315c443aefd040521ca/internal/provider/provider.go#L901](https://github.com/hashicorp/terraform-provider-aws/blob/19d5b4c0d336170d1969a315c443aefd040521ca/internal/provider/provider.go#L901)
+
+data_source - [https://github.com/hashicorp/terraform-provider-aws/blob/19d5b4c0d336170d1969a315c443aefd040521ca/internal/provider/provider.go#L422](https://github.com/hashicorp/terraform-provider-aws/blob/19d5b4c0d336170d1969a315c443aefd040521ca/internal/provider/provider.go#L422)
+
 1. Для создания очереди сообщений SQS используется ресурс `aws_sqs_queue` у которого есть параметр `name`. 
     * С каким другим параметром конфликтует `name`? Приложите строчку кода, в которой это указано.
+    
+    ```Bash
+    "name": {
+                        Type:          schema.TypeString,
+                        Optional:      true,
+                        Computed:      true,
+                        ForceNew:      true,
+                        ConflictsWith: []string{"name_prefix"},
+                },
+    ```
+    
+    ```Bash
+    Конфликтует с параметром "name_prefix"
+    ```
     * Какая максимальная длина имени? 
+    
+    ```Bash
+    75 или 80 в зависимости от состояния переменной "fifoQueue"
+    ```
+    
     * Какому регулярному выражению должно подчиняться имя? 
+    
+    ```Bash
+     var re *regexp.Regexp
+
+                if fifoQueue {
+                        re = regexp.MustCompile(`^[a-zA-Z0-9_-]{1,75}\.fifo$`)
+                } else {
+                        re = regexp.MustCompile(`^[a-zA-Z0-9_-]{1,80}$`)
+                }
+
+                if !re.MatchString(name) {
+                        return fmt.Errorf("invalid queue name: %s", name)
+                }
+     ```
     
 ## Задача 2. (Не обязательно) 
 В рамках вебинара и презентации мы разобрали как создать свой собственный провайдер на примере кофемашины. 
