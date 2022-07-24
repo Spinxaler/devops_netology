@@ -1,0 +1,5 @@
+---
+clickhouse:
+  hosts:
+    lucid_diffie:
+      ansible_connection: docker
