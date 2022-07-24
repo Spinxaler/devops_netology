@@ -4,3 +4,13 @@ clickhouse_packages:
   - clickhouse-client
   - clickhouse-server
   - clickhouse-common-static
+
+vector_version: 0.22.0
+vector_url: https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.x86_64.rpm
+vector_config:
+  sources:
+    my_logs:
+      type: demo_logs
+      format: shuffle
+      lines:
+        - Line 1

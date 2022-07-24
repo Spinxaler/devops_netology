@@ -1,5 +1,5 @@
 ---
 clickhouse:
   hosts:
-    lucid_diffie:
-      ansible_connection: docker
+    centos7:
+      ansible_host: 51.250.23.190
