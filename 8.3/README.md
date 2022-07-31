@@ -26,3 +26,5 @@
 Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
 
 ---
+![image](https://user-images.githubusercontent.com/16610642/182041272-08066dc3-a1df-499a-b8f0-ff90342995f1.png)
+![image](https://user-images.githubusercontent.com/16610642/182041292-9a9ecd08-e86c-4b7d-ad1a-4558a53d6221.png)
