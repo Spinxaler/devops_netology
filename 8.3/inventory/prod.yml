@@ -2,12 +2,12 @@
 clickhouse:
   hosts:
     clickhouse:
-      ansible_host: root@centos7-n
+      ansible_host: 130.193.40.60
 vector:
   hosts:
     vector:
-      ansible_host: root@centos7-n
+      ansible_host: 51.250.31.237
 lighthouse:
   hosts:
     lighthouse:
-      ansible_host: root@centos7-n
+      ansible_host: 84.201.152.121
