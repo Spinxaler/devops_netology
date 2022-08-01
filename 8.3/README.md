@@ -26,5 +26,18 @@
 Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
 
 ---
+
+В моём playbook 4 PLAY (Install Clickhouse, Install Vector, Install Nginx, Install Lighthouse)
+- В Inventory Прописаны группы Clickhouse, Vector, Lighthouse в каждой группе можно указать любое количество хостов, в моём случае по 1 хосту в каждой группе.
+- В group_vars Прописаны параметры для каждой группы хостов. 
+- Прописаны ТЕГИ clickhouse, vector, lighthouse  каждый тег назначен только тем TASK которые отвечают за это приложение.
+
+- 1 PLAY "Install Clickhouse" - 8 TASK (Скачивание пакетов Clickhouse, Установка пакетов, с помощью template копирование файлов конфигурация, создание базы данных и таблицы)
+- 2 PLAY "Install Vector" - 10 TASK (Создаём группу и пользователя, прописываем в конфигурацию IP Clickhouse, скачиваем Vector, устанавливаем, создаём сим.линк, копируем конфигурационные файлы, после всего handlers Старт сервиса Vector)
+- 3 PLAY "Install Nginx" - 4 TASK (Скачивание пакетов Nginx, прописываем в конфигурацию IP Vector, Стартуем сервис Nginx)
+- 4 PLAY "Install Lighthouse" - 4 TASK (Ставим Git, Клонируем Lighthouse, с помощью template копирование файлов конфигурация, Стартуем сервис Lighthouse)
+
+Постарался максимально использовать механизим pre_tasks, post_tasks, handlers.
+
 ![image](https://user-images.githubusercontent.com/16610642/182041272-08066dc3-a1df-499a-b8f0-ff90342995f1.png)
 ![image](https://user-images.githubusercontent.com/16610642/182041292-9a9ecd08-e86c-4b7d-ad1a-4558a53d6221.png)
