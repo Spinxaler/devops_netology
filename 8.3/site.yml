@@ -17,7 +17,6 @@
             url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
             dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
           with_items: "{{ clickhouse_packages }}"
-#          register: res_sc
       rescue:
         - name: Get clickhouse distrib rescue
           ansible.builtin.get_url:
