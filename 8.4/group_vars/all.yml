@@ -1,0 +1,3 @@
+---
+clickhouse_tablelogs: "logs"
+clickhouse_node_ip: "130.193.55.82"
