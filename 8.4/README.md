@@ -31,9 +31,6 @@
 11. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
 
 
-https://github.com/Spinxaler/vector-role.git
-
-https://github.com/Spinxaler/lighthouse-role.git
 
 ---
 
@@ -42,3 +39,13 @@ https://github.com/Spinxaler/lighthouse-role.git
 Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
 
 ---
+https://github.com/Spinxaler/vector-role.git
+
+https://github.com/Spinxaler/lighthouse-role.git
+
+
+![image](https://user-images.githubusercontent.com/16610642/183287384-cf832f96-4a3c-4f51-b882-0c9e8b468f6a.png)
+
+![image](https://user-images.githubusercontent.com/16610642/183287419-62444ca1-da58-4159-961e-3ed73bf89cfb.png)
+
+
