@@ -35,7 +35,6 @@ https://github.com/Spinxaler/vector-role.git
 
 https://github.com/Spinxaler/lighthouse-role.git
 
-https://github.com/Spinxaler/devops_netology/tree/master/8.4
 ---
 
 ### Как оформить ДЗ?
