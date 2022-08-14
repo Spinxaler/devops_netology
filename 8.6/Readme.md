@@ -187,11 +187,16 @@ if __name__ == '__main__':
 
 14. Создайте ещё одну директорию любого наименования, перенесите туда single task playbook и архив c collection.
 15. Установите collection из локального архива: `ansible-galaxy collection install <archivename>.tar.gz`
-16. Запустите playbook, убедитесь, что он работает.
+
+![image](https://user-images.githubusercontent.com/16610642/184537635-00212797-2ae5-41c4-9d05-e462fbc63c79.png)
+
+17. Запустите playbook, убедитесь, что он работает.
 
 ![image](https://user-images.githubusercontent.com/16610642/184537561-4d4882ee-3ba6-4940-848e-fd275ab5b004.png)
 
 17. В ответ необходимо прислать ссылку на репозиторий с collection
+
+
 
 ## Необязательная часть
 
