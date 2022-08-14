@@ -196,7 +196,7 @@ if __name__ == '__main__':
 
 17. В ответ необходимо прислать ссылку на репозиторий с collection
 
-
+My_collection(https://github.com/Spinxaler/my_own_collection.git)
 
 ## Необязательная часть
 
