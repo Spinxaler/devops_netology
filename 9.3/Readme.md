@@ -41,6 +41,8 @@
 3. Проверяем, что все файлы загрузились успешно
 4. В ответе присылаем файл `maven-metadata.xml` для этого артефекта
 
+https://github.com/Spinxaler/devops_netology/blob/master/9.3/maven-metadata.xml
+
 ### Знакомство с Maven
 
 ### Подготовка к выполнению
@@ -57,6 +59,8 @@
 2. Запускаем команду `mvn package` в директории с `pom.xml`, ожидаем успешного окончания
 3. Проверяем директорию `~/.m2/repository/`, находим наш артефакт
 4. В ответе присылаем исправленный файл `pom.xml`
+
+https://github.com/Spinxaler/devops_netology/blob/master/9.3/mvn/pom.xml
 
 ---
 
