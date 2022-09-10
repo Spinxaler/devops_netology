@@ -37,7 +37,7 @@
 18. Проверьте, что конфигурация в репозитории содержит все настройки конфигурации из teamcity
 19. В ответ предоставьте ссылку на репозиторий
 
-https://github.com/Spinxaler/example-teamcity.git[https://github.com/Spinxaler/example-teamcity.git]
+https://github.com/Spinxaler/example-teamcity.git
 ---
 
 ### Как оформить ДЗ?
