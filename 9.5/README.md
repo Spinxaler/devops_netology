@@ -31,13 +31,13 @@
 14. Внесите изменения из произвольной ветки `feature/add_reply` в `master` через `Merge`
 15. Убедитесь, что нет собранного артефакта в сборке по ветке `master`
 16. Настройте конфигурацию так, чтобы она собирала `.jar` в артефакты сборки
-
+![image](https://user-images.githubusercontent.com/16610642/189480136-74d2693d-a59d-417f-80fd-5fed1203559c.png)
 17. Проведите повторную сборку мастера, убедитесь, что сбора прошла успешно и артефакты собраны
 ![image](https://user-images.githubusercontent.com/16610642/189480054-2d57a8af-a26d-4903-9881-995cf3675ceb.png)
-
 18. Проверьте, что конфигурация в репозитории содержит все настройки конфигурации из teamcity
 19. В ответ предоставьте ссылку на репозиторий
 
+https://github.com/Spinxaler/example-teamcity.git[https://github.com/Spinxaler/example-teamcity.git]
 ---
 
 ### Как оформить ДЗ?
