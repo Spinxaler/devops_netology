@@ -115,6 +115,52 @@ P.S.: количество собираемых метрик должно быт
 P.P.S.: по желанию можно себя не ограничивать только сбором метрик из `/proc`.
 
 ---
+```python
+#!/usr/bin/env python3
+import os
+import datetime
+import json
+
+dataday = datetime.date.today()
+datanow = datetime.datetime.now()
+
+def file_open_write (name):
+    filename = f'{dataday}-awesome-monitoring.log'
+    filepath = '/var/log/' + filename
+    if os.path.isfile(filepath) == False:
+        delfile = open(filepath, 'w')
+        delfile.close()
+    fileLog = open(filepath, 'a')
+    jsonfile = {str(datanow): name}
+    json.dump(jsonfile, fileLog, indent=2)
+    fileLog.close()
+    return
+
+listjson = {}
+
+loadavg = open('/proc/loadavg', 'r')
+loadavgdict = loadavg.read().split(' ')
+loadavgdict = loadavgdict[:3]
+loadavg = ['avg-1min', 'avg-5min', 'avg-15min']
+listjson = dict(zip(loadavg, loadavgdict))
+
+uptime = open('/proc/uptime', 'r')
+uptime = uptime.read().split(' ')
+uptime = int(float(uptime[0]) / 60)
+listjson['uptime-min'] = uptime
+
+meminfo = open('/proc/meminfo','r')
+meminfo = meminfo.read().split('\n')
+memtotal = meminfo[0].split(' ')
+memavailable = meminfo[2].split(' ')
+memfreeprocent = int(int(memavailable[-2]) / int(memtotal[-2]) * 100)
+listjson['memofree %'] = memfreeprocent
+
+file_open_write(listjson)
+```
+![image](https://user-images.githubusercontent.com/16610642/190866666-e3a5955b-71d9-4820-8e43-cd0ff759d2d6.png)
+![image](https://user-images.githubusercontent.com/16610642/190866707-5efe2bf0-1ef9-4551-9f6a-7886b0d71a02.png)
+
 
 ### Как оформить ДЗ?
 
