@@ -45,6 +45,8 @@ node_filesystem_avail_bytes {instance="nodeexporter:9100", job="nodeexporter", m
 
 Для решения ДЗ - приведите скриншот вашей итоговой Dashboard.
 
+![image](https://user-images.githubusercontent.com/16610642/192113017-b15102e1-a03c-458c-8592-b9aeb74f8dca.png)
+
 ## Задание 4
 Сохраните ваш Dashboard.
 
