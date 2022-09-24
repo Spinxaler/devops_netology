@@ -55,3 +55,5 @@ node_filesystem_avail_bytes {instance="nodeexporter:9100", job="nodeexporter", m
 Далее скопируйте отображаемое json-содержимое в отдельный файл и сохраните его.
 
 В решении задания - приведите листинг этого файла.
+
+https://github.com/Spinxaler/devops_netology/blob/master/10.3/dashboard.json
