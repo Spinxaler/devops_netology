@@ -42,7 +42,54 @@ pull минусы:
     - curl http://localhost:8086/ping
     - curl http://localhost:8888
     - curl http://localhost:9092/kapacitor/v1/ping
+```
+[root@localhost sandbox]# curl http://localhost:8086/ping --verbose
+*   Trying ::1:8086...
+* Connected to localhost (::1) port 8086 (#0)
+> GET /ping HTTP/1.1
+> Host: localhost:8086
+> User-Agent: curl/7.76.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 204 No Content
+< Content-Type: application/json
+< Request-Id: e91e732a-401a-11ed-99a9-0242ac190003
+< X-Influxdb-Build: OSS
+< X-Influxdb-Version: 1.8.10
+< X-Request-Id: e91e732a-401a-11ed-99a9-0242ac190003
+< Date: Thu, 29 Sep 2022 17:19:44 GMT
+<
+* Connection #0 to host localhost left intact
+[root@localhost sandbox]# http://localhost:9092/kapacitor/v1/ping --verbose
+bash: http://localhost:9092/kapacitor/v1/ping: No such file or directory
+[root@localhost sandbox]# curl http://localhost:8888 --verbose
+*   Trying ::1:8888...
+* Connected to localhost (::1) port 8888 (#0)
+> GET / HTTP/1.1
+> Host: localhost:8888
+> User-Agent: curl/7.76.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Accept-Ranges: bytes
+< Cache-Control: public, max-age=3600
+< Content-Length: 414
+< Content-Security-Policy: script-src 'self'; object-src 'self'
+< Content-Type: text/html; charset=utf-8
+< Etag: ubyGAbz3Tc69bqd3w45d4WQtqoI=
+< Vary: Accept-Encoding
+< X-Chronograf-Version: 1.10.0
+< X-Content-Type-Options: nosniff
+< X-Frame-Options: SAMEORIGIN
+< X-Xss-Protection: 1; mode=block
+< Date: Thu, 29 Sep 2022 17:21:07 GMT
+<
+* Connection #0 to host localhost left intact
+<!DOCTYPE html><html><head><link rel="stylesheet" href="/index.c708214f.css"><meta http-equiv="Content-type" content="text/html; charset=utf-8"><title>Chronograf</title><link rel="icon shortcut" href="/favicon.70d63073.ico"></head><b[root@localhost sandbox]#
 
+```
 А также скриншот веб-интерфейса ПО chronograf (`http://localhost:8888`). 
 
 ![image](https://user-images.githubusercontent.com/16610642/192867919-e536c0b2-f57c-487c-b71c-5645c06153cb.png)
