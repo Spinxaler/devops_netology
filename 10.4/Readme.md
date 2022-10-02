@@ -22,6 +22,8 @@ Filebeat следует сконфигурировать для отправки
 - скриншот интерфейса kibana
 - docker-compose манифест (если вы не использовали директорию help)
 - ваши yml конфигурации для стека (если вы не использовали директорию help)
+![image](https://user-images.githubusercontent.com/16610642/193467891-a79a1b6b-6f98-48a0-bc3f-320d1daa36ed.png)
+![image](https://user-images.githubusercontent.com/16610642/193468595-1b7e97a1-ffcb-4f2c-887d-3842d2a64df9.png)
 
 ## Задание 2
 
