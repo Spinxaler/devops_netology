@@ -51,4 +51,10 @@
 | Проcтота эксплуатации | - | + | + | + | + | - | - |
 
 Оптимально выбрать Kafka или Redis, так как у них наибольшее количество плюсов и самое большое коммьюнити.
+Доработка 
 
+По Nginx вот это мне показалось решение этого вопроса.
+https://nginx.org/ru/docs/http/ngx_http_auth_request_module.html
+
+По скорости решение на основе вот этой статьи.
+https://medium.com/nuances-of-programming/сравниваем-эффективность-redis-kafka-и-rabbitmq-fcd363d5d8c
