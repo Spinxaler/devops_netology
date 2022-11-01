@@ -37,6 +37,9 @@
 После установки Minikube требуется его проверить. Для этого подойдет стандартное приложение hello world. А для доступа к нему потребуется ingress.
 
 - развернуть через Minikube тестовое приложение по [туториалу](https://kubernetes.io/ru/docs/tutorials/hello-minikube/#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-minikube)
+  
+  ![image](https://user-images.githubusercontent.com/16610642/199181924-466c3359-a0a2-431b-bc8e-84e47502242d.png)
+
 - установить аддоны ingress и dashboard
 
 ![image](https://user-images.githubusercontent.com/16610642/199179948-062a5553-e175-46ea-b76b-028f617c59c5.png)
