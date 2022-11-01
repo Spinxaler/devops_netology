@@ -16,14 +16,11 @@
   - sudo apt-get update && sudo apt-get install docker.io conntrack -y
   - curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 - проверить версию можно командой minikube version
-  ![image](https://user-images.githubusercontent.com/16610642/199175102-09da043b-159a-440a-8a41-89337ae2d0f3.png)
-
 - переключаемся на root и запускаем миникуб: minikube start --vm-driver=none
 - после запуска стоит проверить статус: minikube status
-  ![image](https://user-images.githubusercontent.com/16610642/199175832-0b9aaa5b-d2fa-46d9-baff-fa4be53c9ab4.png)
-
 - запущенные служебные компоненты можно увидеть командой: kubectl get pods --namespace=kube-system
-![image](https://user-images.githubusercontent.com/16610642/199175909-e261ddb0-4184-4f94-bc75-85bf346c8d7b.png)
+
+![image](https://user-images.githubusercontent.com/16610642/199180081-f7e3a0c0-1ea7-444e-b836-244e05a3e976.png)
 
 ### Для сброса кластера стоит удалить кластер и создать заново:
 - minikube delete
@@ -34,12 +31,15 @@
 Инструкция по установке Minikube - [ссылка](https://kubernetes.io/ru/docs/tasks/tools/install-minikube/)
 
 **Важно**: t3.small не входит во free tier, следите за бюджетом аккаунта и удаляйте виртуалку.
-  
+ 
+ 
 ## Задача 2: Запуск Hello World
 После установки Minikube требуется его проверить. Для этого подойдет стандартное приложение hello world. А для доступа к нему потребуется ingress.
 
 - развернуть через Minikube тестовое приложение по [туториалу](https://kubernetes.io/ru/docs/tutorials/hello-minikube/#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-minikube)
 - установить аддоны ingress и dashboard
+
+![image](https://user-images.githubusercontent.com/16610642/199179948-062a5553-e175-46ea-b76b-028f617c59c5.png)
 
 ## Задача 3: Установить kubectl
 
