@@ -21,7 +21,13 @@
 Требования: 
  * создан новый токен доступа для пользователя
  * пользователь прописан в локальный конфиг (~/.kube/config, блок users)
+
+![image](https://user-images.githubusercontent.com/16610642/199511102-bc8e570d-61e3-4098-9436-5248631e99c8.png)
+![image](https://user-images.githubusercontent.com/16610642/199513256-56512942-68ca-4404-8395-3753a466eb55.png)
+
  * пользователь может просматривать логи подов и их конфигурацию (kubectl logs pod <pod_id>, kubectl describe pod <pod_id>)
+
+
 
 
 ## Задание 3: Изменение количества реплик 
