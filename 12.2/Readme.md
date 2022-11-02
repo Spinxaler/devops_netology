@@ -31,6 +31,8 @@
  * в deployment из задания 1 изменено количество реплик на 5
  * проверить что все поды перешли в статус running (kubectl get pods)
 
+![image](https://user-images.githubusercontent.com/16610642/199482421-527afe61-92ed-43d2-89ca-f8a8ecc5c267.png)
+
 ---
 
 ### Как оформить ДЗ?
