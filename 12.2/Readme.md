@@ -26,6 +26,8 @@
 ![image](https://user-images.githubusercontent.com/16610642/199513256-56512942-68ca-4404-8395-3753a466eb55.png)
 
  * пользователь может просматривать логи подов и их конфигурацию (kubectl logs pod <pod_id>, kubectl describe pod <pod_id>)
+  
+![image](https://user-images.githubusercontent.com/16610642/199670306-6974d094-a0ba-4d7a-8b50-7255ce426bec.png)
 
 
 
