@@ -5,6 +5,12 @@
 * установка производится через ansible/kubespray;
 * после применения следует настроить политику доступа к hello-world извне. Инструкции [kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/network-policies/), [Calico](https://docs.projectcalico.org/about/about-network-policy)
 
+![image](https://user-images.githubusercontent.com/16610642/201536478-4a1559e0-2c9b-4e1f-91d7-c0468f13097e.png)
+
+![image](https://user-images.githubusercontent.com/16610642/201536292-c9ce174a-ebd3-4bd1-8668-596cfbd25809.png)
+
+![image](https://user-images.githubusercontent.com/16610642/201536497-346aa5d3-c21f-4935-93d5-9c77364aa75f.png)
+
 ## Задание 2: изучить, что запущено по умолчанию
 Самый простой способ — проверить командой calicoctl get <type>. Для проверки стоит получить список нод, ipPool и profile.
 Требования: 
