@@ -9,7 +9,9 @@
 
 ![image](https://user-images.githubusercontent.com/16610642/201536292-c9ce174a-ebd3-4bd1-8668-596cfbd25809.png)
 
-![image](https://user-images.githubusercontent.com/16610642/201536497-346aa5d3-c21f-4935-93d5-9c77364aa75f.png)
+Проверка с консоли управления ip 192.168.0.133, не входит в кластер (Node1 192.168.0.145 Node2 192.168.0.150)
+
+![image](https://user-images.githubusercontent.com/16610642/201737202-1dd42e02-cb8e-4a79-8c4e-41b8e041a667.png)
 
 ## Задание 2: изучить, что запущено по умолчанию
 Самый простой способ — проверить командой calicoctl get <type>. Для проверки стоит получить список нод, ipPool и profile.
