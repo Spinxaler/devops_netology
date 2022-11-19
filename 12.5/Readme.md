@@ -13,6 +13,15 @@
 
 ![image](https://user-images.githubusercontent.com/16610642/201737202-1dd42e02-cb8e-4a79-8c4e-41b8e041a667.png)
 
+## Дороботка.
+Есть доступ между подами. 
+
+![image](https://user-images.githubusercontent.com/16610642/202843268-23a59f1f-8ec9-46ff-8e92-901cf696301e.png)
+
+Нет доступа между подами. 
+
+![image](https://user-images.githubusercontent.com/16610642/202843369-cc05f3ef-4202-4030-a3c9-e4374fa6d71a.png)
+
 ## Задание 2: изучить, что запущено по умолчанию
 Самый простой способ — проверить командой calicoctl get <type>. Для проверки стоит получить список нод, ipPool и profile.
 Требования: 
