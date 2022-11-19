@@ -13,7 +13,7 @@
 
 ![image](https://user-images.githubusercontent.com/16610642/201737202-1dd42e02-cb8e-4a79-8c4e-41b8e041a667.png)
 
-## Дороботка.
+## Доработка.
 Есть доступ между подами. 
 
 ![image](https://user-images.githubusercontent.com/16610642/202843268-23a59f1f-8ec9-46ff-8e92-901cf696301e.png)
