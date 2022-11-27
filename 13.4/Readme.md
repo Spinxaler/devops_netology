@@ -12,8 +12,7 @@
 * вторую версию в том же неймспейсе;
 * третью версию в namespace=app2.
 
-![image](https://user-images.githubusercontent.com/16610642/204141620-020fdaa4-3c2f-47c9-9cbc-b6c9d2da62f1.png)
-
+![image](https://user-images.githubusercontent.com/16610642/204141735-183167ad-e9b9-42bc-8db3-aa565f596b68.png)
 
 ## Задание 3 (*): повторить упаковку на jsonnet
 Для изучения другого инструмента стоит попробовать повторить опыт упаковки из задания 1, только теперь с помощью инструмента jsonnet.
