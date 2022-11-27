@@ -1,0 +1,64 @@
+apps:
+  replicaCount: 1
+  backend:
+    app: backend
+    image: spinxaler/backend:v0.0.1
+    version: latest
+    imagePullPolicy: IfNotPresent
+    env:
+      - name: DATABASE_URL
+        value: postgres://postgres:postgres@db:5432/news
+    service:
+      type: ClusterIP
+      ports:
+      - name: nt134-back
+        deployment_name: nt134-back
+        port: 9000
+        protocol: TCP
+        targetPort: 9000
+  frontend:
+    app: frontend
+    image: spinxaler/frontend:v0.0.1
+    version: latest
+    imagePullPolicy: IfNotPresent
+    env:
+      - name: BASE_URL
+        value: http://backend:9000
+    service:
+      type: ClusterIP
+      ports:
+      - name: frontend
+        deployment_name: frontend
+        port: 80
+        protocol: TCP
+        targetPort: 80
+  db:
+    app: db
+    image: postgres
+    version: 13-alpine
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    env:
+      - name: POSTGRES_USER
+        value: postgres
+      - name: POSTGRES_PASSWORD
+        value: postgres
+      - name: POSTGRES_DB
+        value: news
+    service:
+      type: ClusterIP
+      ports:
+      - name: db
+        deployment_name: postgres
+        port: 5432
+        protocol: TCP
+        targetPort: 5432
+
+resources:
+  requests:
+    memory: 100Mi
+
+autoscaling:
+  enabled: false

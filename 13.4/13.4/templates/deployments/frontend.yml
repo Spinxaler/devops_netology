@@ -1,0 +1,33 @@
+---
+{{- $resources := .Values.resources }}
+{{- $replicas := .Values.apps.replicaCount }}
+{{- $release    := .Release.Name }}
+apiVersion: apps/v1
+kind: Deployment
+{{- with .Values.apps.frontend }}
+metadata:
+  labels:
+    app: {{ .app }}
+  name: {{ $release }}-{{ .app }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .app }}
+  replicas: {{ $replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .app }}
+    spec:
+      containers:
+      - image: {{ .image }}:{{ .version }}
+        imagePullPolicy: {{ .imagePullPolicy }}
+        name: frontend
+        resources:
+          {{- toYaml $resources | nindent 10 }}
+        env:
+          {{- range $index, $data := .env }}
+          - name: {{ $data.name }}
+            value: {{ $data.value }}
+          {{- end}}
+{{ end }}
