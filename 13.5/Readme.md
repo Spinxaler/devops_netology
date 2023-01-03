@@ -16,3 +16,8 @@
 Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
 
 ---
+![image](https://user-images.githubusercontent.com/16610642/210366347-54ed408c-b2a1-46f4-901d-efa1e30f3b0e.png)
+![image](https://user-images.githubusercontent.com/16610642/210366433-cca0b2d4-da00-4c70-8ab8-ea3e1dd622ab.png)
+![image](https://user-images.githubusercontent.com/16610642/210366488-5967dbd1-e5a8-4949-9d57-2f377999e531.png)
+![image](https://user-images.githubusercontent.com/16610642/210366602-50bf5adc-c679-479f-876b-746d6b55f0f4.png)
+![image](https://user-images.githubusercontent.com/16610642/210367648-fde6c7ce-770b-4373-b016-972fed7b6b14.png)
