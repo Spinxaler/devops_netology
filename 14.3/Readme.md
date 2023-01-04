@@ -68,6 +68,7 @@ kubectl apply -f nginx-config.yml
 В качестве решения прикрепите к ДЗ конфиг файлы для деплоя. Прикрепите скриншоты вывода команды kubectl со списком запущенных объектов каждого типа (pods, deployments, configmaps) или скриншот из самого Kubernetes, что сервисы подняты и работают, а также вывод из CLI.
 
 ---
+Манифесты(https://github.com/Spinxaler/devops_netology/tree/master/14.3/2)
 ![image](https://user-images.githubusercontent.com/16610642/210569644-11bb8f26-5841-4e50-80ea-999f0f3aa26f.png)
 ![image](https://user-images.githubusercontent.com/16610642/210569715-ecaa9a97-ed14-4bfe-b915-84b513fc2728.png)
 ![image](https://user-images.githubusercontent.com/16610642/210569905-a60c1292-d3e0-49b4-88ec-6f107d52224d.png)
