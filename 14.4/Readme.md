@@ -89,6 +89,8 @@ kubectl cluster-info
 ```
 
 ---
+[Манифесты](https://github.com/Spinxaler/devops_netology/tree/master/14.4/manifests)
+
 ![image](https://user-images.githubusercontent.com/16610642/210964611-476419f6-b7db-4c40-9ebf-fcbbdadb2735.png)
 
 ### Как оформить ДЗ?
