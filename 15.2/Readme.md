@@ -19,6 +19,15 @@
 - Проверить работоспособность, удалив одну или несколько ВМ.
 4. *Создать Application Load Balancer с использованием Instance group и проверкой состояния.
 
+![image](https://user-images.githubusercontent.com/16610642/218308138-4103893f-f417-46eb-a22f-c9d6f0ad306e.png)
+![image](https://user-images.githubusercontent.com/16610642/218308207-cb86e543-8171-4881-aa24-acbed84e66e4.png)
+![image](https://user-images.githubusercontent.com/16610642/218308492-71304438-4da3-46a9-a458-97d7e3ddc45d.png)
+![image](https://user-images.githubusercontent.com/16610642/218308534-efafd9f2-944c-45ac-b29e-74218067839d.png)
+![image](https://user-images.githubusercontent.com/16610642/218308570-ba96d0f5-9e81-43b0-8f1b-daf19ad5cd5b.png)
+
+![image](https://user-images.githubusercontent.com/16610642/218308385-91ebc0cb-4205-49da-9923-e2fdb29058b6.png)
+
+
 Документация
 - [Compute instance group](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/compute_instance_group)
 - [Network Load Balancer](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/lb_network_load_balancer)
