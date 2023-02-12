@@ -1,0 +1,16 @@
+write_files:
+- content: |
+    <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>title</title>
+        </head>
+        <body>
+          TEST<br>
+          <img src="https://storage.yandexcloud.net/netology-spinxaler/test.png" alt="Test" />
+        </body>
+      </html>
+  path: /var/www/html/index.html
+  owner: root:root
+  permissions: '0644'
