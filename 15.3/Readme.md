@@ -48,3 +48,12 @@ aws s3 mb s3://mysuperbacketname2021
 aws s3 cp index.html s3://mysuperbacketname2021
 ```
 
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/6cbb9ec1-4ab2-4e79-8779-29b5690efaea)
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/705b260b-55fd-43f0-b753-d47153e4e428)
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/9404923a-acf8-4fbf-8c4a-1d5954c479b1)
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/b178c571-48ef-4cff-b0f2-ef8978c68016)
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/23598d57-6969-4f4c-9861-f34f515cf0f1)
+
+Файл index.html зашифрован и не доступен. Следовательно шифрование работает.
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/fb70e113-1f6d-43d6-b1d4-af6084a37f0a)
+
