@@ -64,4 +64,8 @@ aws s3 cp index.html s3://mysuperbacketname2021
 ![image](https://github.com/Spinxaler/devops_netology/assets/16610642/31a2ee92-a45b-4350-8319-9486445448f7)
 ![image](https://github.com/Spinxaler/devops_netology/assets/16610642/30663ded-5b4f-45ec-abb3-2e5a6d217d7d)
 
+Валидация прошла, сайт на https.
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/00ccb7dd-5c2a-4c61-9d19-23347c357c58)
+
+
 
