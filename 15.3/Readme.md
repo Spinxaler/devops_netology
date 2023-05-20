@@ -47,7 +47,7 @@ echo "<html><h1>My cool web-server</h1></html>" > index.html
 aws s3 mb s3://mysuperbacketname2021
 aws s3 cp index.html s3://mysuperbacketname2021
 ```
-
+Подготовка.
 ![image](https://github.com/Spinxaler/devops_netology/assets/16610642/6cbb9ec1-4ab2-4e79-8779-29b5690efaea)
 ![image](https://github.com/Spinxaler/devops_netology/assets/16610642/705b260b-55fd-43f0-b753-d47153e4e428)
 ![image](https://github.com/Spinxaler/devops_netology/assets/16610642/9404923a-acf8-4fbf-8c4a-1d5954c479b1)
@@ -56,4 +56,12 @@ aws s3 cp index.html s3://mysuperbacketname2021
 
 Файл index.html зашифрован и не доступен. Следовательно шифрование работает.
 ![image](https://github.com/Spinxaler/devops_netology/assets/16610642/fb70e113-1f6d-43d6-b1d4-af6084a37f0a)
+
+Отключили шифрование и перезаписали файлы.
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/359fe14e-438b-450d-9e65-07eefe8d6c61)
+
+Сделал запрос на сертификат, и положил файл в бакет, ждём валидацию.
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/31a2ee92-a45b-4350-8319-9486445448f7)
+![image](https://github.com/Spinxaler/devops_netology/assets/16610642/30663ded-5b4f-45ec-abb3-2e5a6d217d7d)
+
 
